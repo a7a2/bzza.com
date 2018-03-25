@@ -1,6 +1,7 @@
 #注意一下配置参数前面双空格 冒号后面1个空格
 config:
   driverName: postgres
+#自行创建bzza数据库
   dataSourceName: postgres://postgres:postgres@127.0.0.1:5432/bzza?sslmode=disable
 mq:
   uri: amqp://guest:guest@192.168.0.76:5672/
