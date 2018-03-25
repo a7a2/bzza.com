@@ -136,7 +136,7 @@ func init() {
 	//	Engine.TZLocation = tL
 	err = createSchema()
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 
 }
