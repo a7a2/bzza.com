@@ -1,0 +1,6 @@
+config:
+  datahost: 192.168.0.78
+  grpgServerArr: [192.168.0.78,192.168.0.77]
+  database: mql5
+#多少秒没有新数据进入就刷新页面 周六日不开市 请校对好时间 任意时区均可
+  pageRefresh: 60

@@ -1,0 +1,23 @@
+#注意一下配置参数前面双空格 冒号后面1个空格
+config:
+  driverName: postgres
+  dataSourceName: postgres://postgres:postgres@127.0.0.1:5432/bzza?sslmode=disable
+mq:
+  uri: amqp://guest:guest@192.168.0.76:5672/
+#推送计量的服务器只能一台 就是api通知生产服务器
+push:
+#pushserver isv生产通知服务器地址（要有对外ip要提交用户使用流量给阿里，填写内部ip为流量统计时候节省流量，也可直接填写外网ip）
+#阿里云服务管理平台设置相关：
+#商品销售信息： 售卖方式 按量服务 ，扣费周期 按天出账扣费，计量维度 下行使用流量
+#接入信息：勾选 配置API生产通知。API生产通知地址(URL)http://aliyun.api.bzza.com/isv，其中aliyun.api.bzza.com（自己换自己域名 别公开免受攻击）使用A记录指向一下server的外网ip。需要用户授权，手机。
+  server: 192.168.0.77
+#对外提供数据接口的服务器地址 即 grpc server地址，可单个可多个集群，多个请英文逗号隔开。尽可能使用内网IP，用户经过api网关请求数据后 数据从内网ip出去api网关免费，如果公网ip就需要计费了。
+  apiServer: [192.168.0.78,192.168.0.77]
+#阿里云配置项
+aliyun:
+#access key id #https://ak-console.aliyun.com/
+  keyId: LTAI2dT9pSwq1TZ8
+#Access Key Secret #https://ak-console.aliyun.com/
+  keySecret: j3a2NFgJIV83ToS0IIB7Tyfbod9chf
+#服务商平台 https://msp.aliyun.com/supplier/supplier_info.htm 中的key
+  serviceKey: JiC2TBnx3coM6TSDNBzFAZPR5qWjb0WlIGSCMn2pSBaXBqgFrkddffmEN7kJpVfn
