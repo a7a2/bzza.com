@@ -104,16 +104,18 @@ func PostAliyun(meteringValue string) {
 }
 
 func LoopPushMeteringData() {
-	for {
-		select {
-		case times := <-time.After(time.Minute): //每分钟调用一下
-			if times.Minute()%5 == 0 { //每5分钟上报一次
-				mapSumNetworkIn := CollectMeteringData()
-				if mapSumNetworkIn == nil {
-					continue
+	if models.Conf.Push.Enable {
+		for {
+			select {
+			case times := <-time.After(time.Minute): //每分钟调用一下
+				if times.Minute()%5 == 0 { //每5分钟上报一次
+					mapSumNetworkIn := CollectMeteringData()
+					if mapSumNetworkIn == nil {
+						continue
+					}
+					//fmt.Println(times)
+					PushMeteringData(mapSumNetworkIn)
 				}
-				//fmt.Println(times)
-				PushMeteringData(mapSumNetworkIn)
 			}
 		}
 	}

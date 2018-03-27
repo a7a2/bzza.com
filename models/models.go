@@ -34,6 +34,7 @@ type Config struct { //config.yaml配置文件
 		Uri string `yaml:"uri"`
 	}
 	Push struct {
+		Enable    bool     `yaml:"enable"`
 		Server    string   `yaml:"server"`
 		ApiServer []string `yaml:"apiServer"`
 	}
